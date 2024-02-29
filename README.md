@@ -1,1 +1,3 @@
 # ehacks-shadow
+Project Ideas:
+    
