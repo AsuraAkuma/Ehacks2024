@@ -3,6 +3,8 @@
 ## Project Team:
     Adam
     Drashti
+    Ethan
+    Henry
 ## Important Links:
-    Porject Plan
+    Project Plan
     > https://docs.google.com/document/d/1um5hD1mVSKi_oxFcO_7fhAR5rfcUoihIhW_NsUblNoY/edit?usp=sharing
