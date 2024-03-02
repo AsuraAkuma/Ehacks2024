@@ -1,12 +1,12 @@
 @font-face {
-    font-family: Beyond;
+    font-family: BlackChancery;
     src: url(../BLKCHCRY.TTF);
 }
 
 * {
     margin: 0px;
     padding: 0px;
-    font-family: Beyond;
+    font-family: BlackChancery;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -27,13 +27,14 @@ canvas {
     width: 100vw;
     display: flex;
     flex-direction: row;
+    border: 2px solid red;
 }
 
 .sideMenu {
     position: relative;
     width: 20%;
     height: 100%;
-    text-align: center;
+    border: 2px solid red;
 }
 
 .sideMenu-list {
@@ -70,7 +71,7 @@ canvas {
     border: 2px solid red;
 }
 
-.optionButton {
+#buyButton {
     width: 80%;
     height: 10%;
     font-size: 2em;
