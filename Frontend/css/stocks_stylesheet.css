@@ -1,5 +1,5 @@
 @font-face {
-    font-family: Beyond;
+    font-family: BlackChancery;
     src: url(../BLKCHCRY.TTF);
 }
 
@@ -26,39 +26,16 @@ canvas {
     width: 100vw;
     display: flex;
     flex-direction: row;
+    border: 2px solid red;
 }
 
 .sideMenu {
     position: relative;
     width: 20%;
     height: 100%;
-    text-align: center;
+    border: 2px solid red;
 }
 
-.sideMenu-list {
-    position: relative;
-    height: 60%;
-    list-style: none;
-}
-
-.sideMenu-list-optionButton {
-    position: relative;
-    height: 31.3%;
-    width: 90%;
-    left: 5%;
-    margin-top: 1%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    background-color: white;
-    /* border: 2px solid red; */
-}
-
-.sideMenu-list-optionButton-text {
-    position: relative;
-    height: min-content;
-}
 .center {
     position: relative;
     width: 60%;
@@ -68,37 +45,10 @@ canvas {
     border: 2px solid red;
 }
 
-.optionButton {
+#buyButton {
     width: 80%;
     height: 10%;
     font-size: 2em;
-}
-
-#multipButton-buy {
-    width: 40%;
-    height: 10%;
-    font-size: 2em;
-    text-align: center;
-}
-
-#multipButton-sell {
-    width: 40%;
-    height: 10%;
-    font-size: 2em;
-}
-
-#multipButton-multip-buy {
-    width: 40%;
-    height: 10%;
-    font-size: 2em;
-    text-align: center;
-}
-
-#multipButton-multip-sell {
-    width: 40%;
-    height: 10%;
-    font-size: 2em;
-    text-align: center;
 }
 
 #canvasContainer {
