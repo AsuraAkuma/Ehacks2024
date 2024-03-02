@@ -1,1 +1,1 @@
-window.location.pathname = "/Frontend/index.html"
+window.location.pathname = "/Ehacks2024/Frontend/index.html"
