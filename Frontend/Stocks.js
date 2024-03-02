@@ -1,20 +1,39 @@
-// Get canvas elements
+// get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
 const canvas3 = document.getElementById('canvas3');
 const canvas4 = document.getElementById('canvas4');
 
-// Get 2D contexts
+// get 2D contexts
 const ctx1 = canvas1.getContext('2d');
 const ctx2 = canvas2.getContext('2d');
 const ctx3 = canvas3.getContext('2d');
 const ctx4 = canvas4.getContext('2d');
 
-// Page load event listener
-body.addEventListener('click', (event) => {
-    console.log(event.target.id.split("-")[2])
-});
+// sidemenu
+const sidemenuBuy = document.getElementById("sideMenu-buy");
+const sidemenuBuyList = document.getElementById("sideMenu-list-buy");
 
+// multiplication selector
+var currMultipBuy = 0;
+var currMultipSell = 0;
+const multipVals = ['1', '5', '10', 'All'];
+
+// init captial
+let captial = 1000
+
+// currentOption
+let currentOption = null;
+let currentStock = null;
+
+let optionList = [];
+let stockList = [];
+
+// Page load event listener
+window.addEventListener('load', (event) => {
+    optionList = generateOptionList();
+    generateBuyOptions(optionList);
+});
 
 function createLine(x1, y1, x2, y2, color, width) {
     ctx.beginPath()
@@ -25,6 +44,78 @@ function createLine(x1, y1, x2, y2, color, width) {
     ctx.stroke();
 };
 
+function generateOptionList() {
+    let list = ['Option 1', 'Option 2', 'Option 3']
+
+    return list
+}
+
+function generateBuyOptions(options) {
+    options.forEach((option) => {
+        const item = document.createElement("li");
+        item.className = "sideMenu-list-optionButton";
+        item.id = `sideMenu-list-optionButton-${option}`;
+        sidemenuBuyList.appendChild(item);
+        const text = document.createElement("h2");
+        text.className = "sideMenu-list-optionButton-text";
+        text.innerHTML = option;
+        item.appendChild(text);
+        item.addEventListener('click', () => {
+            if (currentOption !== null) {
+                const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentOption}`);
+                oldItem.style.boxShadow = "";
+            }
+            item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
+            currentOption = option;
+        });
+    });
+}
+
+function generateSellOptions(stocks) {
+    stocks.forEach((stock) => {
+        const item = document.createElement("li");
+        item.className = "sideMenu-list-optionButton";
+        item.id = `sideMenu-list-optionButton-${stock}`;
+        sidemenuBuyList.appendChild(item);
+        const text = document.createElement("h2");
+        text.className = "sideMenu-list-optionButton-text";
+        text.innerHTML = stock;
+        item.appendChild(text);
+        item.addEventListener('click', () => {
+            if (currentStock !== null) {
+                const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentStock}`);
+                oldItem.style.boxShadow = "";
+            }
+            item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
+            currentStock = stock;
+        });
+    });
+}
+
 function buy() {
-    document.getElementById('buyButton').value = 'work';
+    generateSellOptions(stockList);
+    generateBuyOptions(optionList);
+}
+
+function sell() {
+
+}
+
+function multiplier(elemID) {
+    if (elemID === 'multipButton-buy') {
+        ++currMultipBuy;
+        if (currMultipBuy > 3) {
+            currMultipBuy = 0;
+        }
+        let item = document.getElementById('multipButton-buy');
+        item.innerHTML = `x${multipVals[currMultipBuy]}`;
+    }
+    else {
+        ++currMultipSell;
+        if (currMultipSell > 3) {
+            currMultipSell = 0;
+        }
+        let item = document.getElementById('multipButton-sell');
+        item.innerHTML = `x${multipVals[currMultipSell]}`;
+    }
 }
