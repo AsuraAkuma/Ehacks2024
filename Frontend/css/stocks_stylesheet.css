@@ -12,6 +12,7 @@
 
 h2 {
     font-size: 2.25em;
+    margin-top: 10%;
 }
 
 canvas {
@@ -51,14 +52,15 @@ canvas {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    background-color: white;
-    /* border: 2px solid red; */
+    background-color: rgb(16, 112, 37);
 }
 
 .sideMenu-list-optionButton-text {
     position: relative;
     height: min-content;
+    top: 0%;
 }
+
 .center {
     position: relative;
     width: 60%;
@@ -74,11 +76,15 @@ canvas {
     font-size: 2em;
 }
 
+#sideMenu-list-sell {
+    vertical-align: middle;
+    height: 50%;
+}
+
 #multipButton-buy {
     width: 40%;
     height: 10%;
     font-size: 2em;
-    text-align: center;
 }
 
 #multipButton-sell {
@@ -91,7 +97,6 @@ canvas {
     width: 40%;
     height: 10%;
     font-size: 2em;
-    text-align: center;
 }
 
 #multipButton-multip-sell {
