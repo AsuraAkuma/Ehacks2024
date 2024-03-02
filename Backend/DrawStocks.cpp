@@ -16,7 +16,7 @@ StockLine::StockLine() {
     setdeltaY();
 }
 
-void StockLine::drawLine(double slope, double tail_y_point) {
+void StockLine::drawLine(double slope, double deltaY) {
 
 }
 

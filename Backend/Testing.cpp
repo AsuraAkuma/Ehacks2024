@@ -4,14 +4,28 @@
 using namespace std;
 
 int main() {
-    StockLine stock1;
+    StockLine stockA;
+    StockLine stockB;
+    StockLine stockC;
+    StockLine stockD;
 
-    for (int i = 0; i < 20; ++i) {
-        stock1.setSlope();
-        stock1.setdeltaY();
-        cout << stock1.getSlope() << endl;
-        cout << stock1.getdeltaY() << endl << endl;
-    }
 
-    return 0;
+    /*
+    Every 4 seconds update all current stocklines
+    Every 20 seconds perform an event
+
+    Gamemodes:
+    Timed
+    
+
+    Endless
+
+
+    King of Debt
+
+
+    
+    
+    
+    */
 }
