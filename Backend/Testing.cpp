@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     StockLine stock1;
 
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 20; ++i) {
         stock1.setSlope();
         stock1.setdeltaY();
         cout << stock1.getSlope() << endl;

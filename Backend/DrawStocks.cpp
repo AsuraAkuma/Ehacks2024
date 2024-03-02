@@ -4,9 +4,10 @@
 
 using namespace std;
 
-random_device rd;
-mt19937 gen(rd()); // seed the generator
-uniform_int_distribution<> distr(0, 14);
+double low = 0;
+double high = 7;
+normal_distribution<double> unif(low, high);
+default_random_engine re;
 
 const int defaultLength = 4;
 
@@ -20,10 +21,7 @@ void StockLine::drawLine(double slope, double tail_y_point) {
 }
 
 void StockLine::setSlope() {
-    int randInt1 = rand();
-    int randInt2 = rand();
-    
-    slope = sin(distr(gen));
+    slope = sin(unif(re));
 }
 
 void StockLine::setdeltaY() {
