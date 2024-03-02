@@ -5,8 +5,10 @@ public:
     StockLine();
 
     void drawLine(double slope, double tail_y_point);
-    double createSlope();
+    void setSlope();
+    void setdeltaY();
     double getSlope();
+    double getdeltaY();
 
 private:
 

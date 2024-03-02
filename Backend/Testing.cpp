@@ -7,11 +7,11 @@ int main() {
     StockLine stock1;
 
     for (int i = 0; i < 10; ++i) {
-        stock1.createSlope();
-        cout << stock1.getSlope();
+        stock1.setSlope();
+        stock1.setdeltaY();
+        cout << stock1.getSlope() << endl;
+        cout << stock1.getdeltaY() << endl << endl;
     }
-
-
 
     return 0;
 }
