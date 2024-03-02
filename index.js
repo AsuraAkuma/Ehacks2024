@@ -1,0 +1,1 @@
+window.location.pathname = "/Frontend/index.html"
