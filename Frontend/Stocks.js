@@ -13,6 +13,12 @@ const ctx4 = canvas4.getContext('2d');
 // sidemenu
 const sidemenuBuy = document.getElementById("sideMenu-buy");
 const sidemenuBuyList = document.getElementById("sideMenu-list-buy");
+const sidemenuSellList = document.getElementById("sideMenu-list-sell");
+
+const buyButton = document.getElementById("multipButton-buy");
+const sellButton = document.getElementById("multipButton-sell");
+const multipButtonBuy = document.getElementById("multipButton-multip-buy");
+const multipButtonSell = document.getElementById("multipButton-multip-sell");
 
 // multiplication selector
 var currMultipBuy = 0;
@@ -20,11 +26,11 @@ var currMultipSell = 0;
 const multipVals = ['1', '5', '10', 'All'];
 
 // init captial
-let captial = 1000
+var captial = 1000;
 
 // currentOption
-let currentOption = null;
-let currentStock = null;
+var currentOption = null;
+var currentStock = null;
 
 let optionList = [];
 let stockList = [];
@@ -34,6 +40,18 @@ window.addEventListener('load', (event) => {
     optionList = generateOptionList();
     generateBuyOptions(optionList);
 });
+
+sellButton.addEventListener('click', () => {
+    sell();
+})
+
+multipButtonBuy.addEventListener('click', () => {
+    multiplier("multipButton-multip-buy");
+})
+
+multipButtonSell.addEventListener('click', () => {
+    multiplier("multipButton-multip-sell");
+})
 
 function createLine(x1, y1, x2, y2, color, width) {
     ctx.beginPath()
@@ -51,6 +69,7 @@ function generateOptionList() {
 }
 
 function generateBuyOptions(options) {
+
     options.forEach((option) => {
         const item = document.createElement("li");
         item.className = "sideMenu-list-optionButton";
@@ -66,17 +85,23 @@ function generateBuyOptions(options) {
                 oldItem.style.boxShadow = "";
             }
             item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
-            currentOption = option;
+            buyButton.addEventListener('click', () => {
+                buy(option);
+            });
+            console.log(currentOption);
         });
     });
 }
 
 function generateSellOptions(stocks) {
+    console.log(stockList);
+    sidemenuBuyList.innerHTML = "";
+    sidemenuSellList.innerHTML = "";
     stocks.forEach((stock) => {
         const item = document.createElement("li");
         item.className = "sideMenu-list-optionButton";
         item.id = `sideMenu-list-optionButton-${stock}`;
-        sidemenuBuyList.appendChild(item);
+        sidemenuSellList.appendChild(item);
         const text = document.createElement("h2");
         text.className = "sideMenu-list-optionButton-text";
         text.innerHTML = stock;
@@ -92,7 +117,8 @@ function generateSellOptions(stocks) {
     });
 }
 
-function buy() {
+function buy(stock) {
+    stockList.push(stock);
     generateSellOptions(stockList);
     generateBuyOptions(optionList);
 }
@@ -102,20 +128,20 @@ function sell() {
 }
 
 function multiplier(elemID) {
-    if (elemID === 'multipButton-buy') {
-        ++currMultipBuy;
+    if (elemID === 'multipButton-multip-buy') {
+        currMultipBuy++;
         if (currMultipBuy > 3) {
             currMultipBuy = 0;
         }
-        let item = document.getElementById('multipButton-buy');
-        item.innerHTML = `x${multipVals[currMultipBuy]}`;
+        let item = document.getElementById('multipButton-multip-buy');
+        item.value = `x${multipVals[currMultipBuy]}`;
     }
     else {
-        ++currMultipSell;
+        currMultipSell++;
         if (currMultipSell > 3) {
             currMultipSell = 0;
         }
-        let item = document.getElementById('multipButton-sell');
-        item.innerHTML = `x${multipVals[currMultipSell]}`;
+        let item = document.getElementById('multipButton-multip-sell');
+        item.value = `x${multipVals[currMultipSell]}`;
     }
 }
