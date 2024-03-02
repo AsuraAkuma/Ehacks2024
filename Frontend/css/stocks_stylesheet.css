@@ -1,0 +1,47 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.body {
+    position: absolute;
+    background-color: rgb(120,120,120);
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid red;
+}
+.sideMenu {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    border: 2px solid red;
+}
+.center {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+}
+
+/* .chart-sec {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+
+.chart-sec-chart {
+    position: relative;
+    width: 47.5%;
+    height: 100%;
+} */
