@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="./Stocks.js" type="module"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/stocks_stylesheet.css" />
+    <title>Document</title>
+  </head>
+  <body class="body" id="body">
+    <div class="sideMenu" id="SIDEMENU">
+      <h2>BUY</h2>
+      <input onclick="buy()" id="buyButton" type="button" value="Option 1"></input>
+      <input onclick="buy()" id="buyButton" type="button" value="Option 2"></input>
+      <input onclick="buy()" id="buyButton" type="button" value="Option 3"></input>
+      <button></button>
+    </div>
+    <div class="center" id="canvasContainer">
+      <canvas id="canvas1"></canvas>
+      <canvas id="canvas2"></canvas>
+      <canvas id="canvas3"></canvas>
+      <canvas id="canvas4"></canvas>
+    </div>
+    <div class="sideMenu" id="sideMenu-sell">
+      <h2>SELL</h2>
+      <button id="sideMenu-sell-1"></button>
+      <button id="sideMenu-sell-2"></button>
+      <button id="sideMenu-sell-3"></button>
+    </div>
+  </body>
+</html>
