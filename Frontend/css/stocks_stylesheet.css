@@ -35,9 +35,9 @@ canvas {
     width: 20%;
     height: 100%;
     border: 2px solid red;
+    text-align: center;
 }
 
-<<<<<<< HEAD
 .sideMenu-list {
     position: relative;
     height: 60%;
@@ -63,8 +63,6 @@ canvas {
     top: 0%;
 }
 
-=======
->>>>>>> 8c96c6880dd20525776f58bf71ea8af8b5dddf8e
 .center {
     position: relative;
     width: 60%;
@@ -80,7 +78,6 @@ canvas {
     font-size: 2em;
 }
 
-<<<<<<< HEAD
 #sideMenu-list-sell {
     vertical-align: middle;
     height: 50%;
@@ -111,8 +108,6 @@ canvas {
     text-align: center;
 }
 
-=======
->>>>>>> 8c96c6880dd20525776f58bf71ea8af8b5dddf8e
 #canvasContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
