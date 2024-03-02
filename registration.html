@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="./css/registration.css">
+    <style>
+        body {
+            background-image: url('./Gamemodes/ehacks_medieval1.png'); /* Replace 'path_to_your_background_image.png' with the actual path to your PNG background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Specify a fallback font family */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Create an Account</h2>
+        <form class="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Choose a password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div class="create-account">
+            <p>Already have an account? <a href="loginpage.html">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>

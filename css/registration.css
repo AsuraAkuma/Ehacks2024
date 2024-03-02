@@ -1,0 +1,88 @@
+@font-face {
+    font-family: BlackChancery;
+    src: url(../Frontend/BLKCHCRY.TTF);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: BlackChancery;
+    background-color: rgb(88, 88, 88); /* Main background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    width: 300px;
+    background-color: rgb(16, 112, 37); /* Container background color */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: rgb(211, 159, 27); /* Heading color */
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: white; /* Label color */
+}
+
+
+input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1); /* Input background color */
+    color: white; /* Input text color */
+    box-sizing: border-box; /* Ensure consistent box-sizing */
+}
+
+input::placeholder { /* Style placeholder for email input */
+    color: white; /* Placeholder text color */
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(118, 7, 7); /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Button hover background color */
+}
+
+.create-account {
+    margin-top: 20px;
+}
+
+.create-account p {
+    color: white; /* Text color for "Don't have an account?" */
+}
+
+.create-account a {
+    color: rgb(211, 159, 27); /* Link color */
+    text-decoration: none;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}
