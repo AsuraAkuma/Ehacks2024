@@ -34,7 +34,7 @@ canvas {
     position: relative;
     width: 20%;
     height: 100%;
-    border: 2px solid red;
+    text-align: center;
 }
 
 .sideMenu-list {
