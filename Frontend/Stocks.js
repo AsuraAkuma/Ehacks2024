@@ -44,6 +44,7 @@ function getNames(count) {
     });
     return names;
 }
+
 // Page load event listener
 window.addEventListener('load', (event) => {
     const fragment = new URLSearchParams(window.location.hash.slice(1));
@@ -103,6 +104,7 @@ window.addEventListener('load', (event) => {
         let list = []
         for (let i = 0; i < 3; i++) {
             list.push(grabFromNames());
+            console.log("in")
         }
         return list
     }
