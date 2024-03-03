@@ -1,3 +1,6 @@
+import config from './config.json' assert { type: "json" };
+
+
 // get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
