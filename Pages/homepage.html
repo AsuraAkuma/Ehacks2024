@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script defer type="module" src="./script.js"></script> -->
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="homepage.css">
+    <script defer type="module" src="./script.js"></script>
+    <script src="./leaderboard.js"></script>
+
+</head>
+
+<body>
+    <header class="header">
+
+    </header>
+    <div class="Container">
+        <div class = "Container_Side_Bar">
+            <div class = "Recent_Games"><b>Recent Games</b></div> 
+            <div class = "Performance"><b>Performance</b></div> 
+        </div>
+        <div class = "Container_Middle_Bar">
+            <div class = "Game_Modes">
+                <button id="timed-button" class="Game_Modes_Button">
+                    <h3>Timed</h2>
+                </button>
+                <button id="endless-button" class="Game_Modes_Button">
+                    <h3>Endless</h3>
+                </button>
+                <button id="king-button" class="Game_Modes_Button">
+                    <h3>King of Debt</h4>
+                </button>
+            </div>
+            <div id="start-button" class="Play">
+                <h4>TRADE</h4>
+            </div>
+        </div>
+        <div class = "Container_Side_Bar">
+            <section class="table__header">
+                <div class="center-vert table__header_container">
+                    <span class="material-symbols-sharp">leaderboard</span>
+                </div>
+            </section>
+            <ul class="Container_Side_Bar_List" id="Container_Side_Bar_List">
+                <!-- <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li>
+                <li class="Container_Side_Bar_List_Item" id="Container_Side_Bar_List_Item_0">
+                    <h2 class="Container_Side_Bar_List_Item_Text">1. Username | $50,000,000</h2>
+                </li> -->
+
+            </ul>
+            <!-- <main class="table">
+                <section class="table__header">
+                    <div class="center-vert table__header_container">
+                        <span class="material-symbols-sharp">leaderboard</span>
+                    </div>
+                </section>
+                <section class="table__body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>User</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>sample1</td>
+                                <td> <strong>500</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>sam2</td>
+                                <td> <strong>300</strong></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>sam3</td>
+                                <td> <strong>100</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>     -->
+        </div> 
+        <!-- paste table -->
+    </div>
+
+    <!-- <div class = "Leaderboard"><b>Leaderboard</b></div> -->
+    
+    <!-- <a href="./newgame.html" class="new-game-button">New Game</a> -->
+    
+
+</body>
+
+</html>
