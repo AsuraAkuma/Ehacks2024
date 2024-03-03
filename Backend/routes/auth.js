@@ -89,6 +89,7 @@ router.get('/discord', async (req, res) => {
                     upsert: true
                 }
             );
+            console.log('test')
             res.status(200).send({ success: true, msg: "success" });
         };
     } catch (error) {

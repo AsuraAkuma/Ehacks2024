@@ -39,13 +39,11 @@ let stockObjList = [];
 
 // Company names
 function getNames(count) {
-    let names;
     fetch(`${config.apiUri}/api/data/getnames?` + new URLSearchParams({ count: count })).then((result) => {
         return result.json();
     }).then((response) => {
-        names = response.names;
+        return response.names;
     });
-    return names;
 }
 
 // Page load event listener
@@ -55,8 +53,8 @@ window.addEventListener('load', (event) => {
     let tokenType;
     let gameMode = "endless";
     if (fragment.toString() !== '') {
-        document.cookie = `accessToken=${fragment.get('access_token')}`;
-        document.cookie = `tokenType=${fragment.get('token_type')}`;
+        document.cookie = `accessToken=${fragment.get('access_token;path=/')}`;
+        document.cookie = `tokenType=${fragment.get('token_type')};path=/`;
         window.location.href = `${window.location.origin}${window.location.pathname}`;
     } else {
         document.cookie.split(";").forEach((cookie) => {
@@ -79,9 +77,6 @@ window.addEventListener('load', (event) => {
         return result.json()
     }).then((response) => {
         const { id, username, avatar, email, banner_color, mfa_enabled, verified, locale } = response;
-        socket.emit("start-game", { gamemode: gameMode, players: [id] });
-        console.log("start game message emitted")
-
 
     });
     // Webhooks Events
@@ -92,8 +87,7 @@ window.addEventListener('load', (event) => {
     let currentSellOption = null;
     var capitalTxt = document.getElementById("capital");
     capitalTxt.innerHTML = `Capital: ${capital}`;
-    optionList = generateOptionList();
-    generateBuyOptions(optionList);
+    generateBuyOptions();
 
     multipButtonBuy.addEventListener('click', () => {
         multiplier("multipButton-multip-buy");
@@ -103,30 +97,33 @@ window.addEventListener('load', (event) => {
         multiplier("multipButton-multip-sell");
     })
 
-    function generateOptionList() {
-        let list = []
-        list = getNames(3);
-        return list
-    }
 
-    function generateBuyOptions(options) {
-        sidemenuBuyList.innerHTML = "";
-        options.forEach((option) => {
-            const item = document.createElement("li");
-            item.className = "sideMenu-list-optionButton";
-            item.id = `sideMenu-list-optionButton-buy-${option}`;
-            sidemenuBuyList.appendChild(item);
-            const text = document.createElement("h2");
-            text.className = "sideMenu-list-optionButton-text";
-            text.innerHTML = option;
-            item.appendChild(text);
-            item.addEventListener('click', () => {
-                if (currentBuyOption !== null) {
-                    const oldItem = document.getElementById(`sideMenu-list-optionButton-buy-${currentBuyOption}`);
-                    oldItem.style.boxShadow = "";
-                }
-                currentBuyOption = option
-                item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
+    function generateBuyOptions() {
+        fetch(`${config.apiUri}/api/data/getnames?` + new URLSearchParams({ count: 3 }), {
+            headers: new Headers({
+                "ngrok-skip-browser-warning": "69420",
+            })
+        }).then((result) => {
+            return result.json();
+        }).then((response) => {
+            sidemenuBuyList.innerHTML = "";
+            response.names.forEach((option) => {
+                const item = document.createElement("li");
+                item.className = "sideMenu-list-optionButton";
+                item.id = `sideMenu-list-optionButton-buy-${option}`;
+                sidemenuBuyList.appendChild(item);
+                const text = document.createElement("h2");
+                text.className = "sideMenu-list-optionButton-text";
+                text.innerHTML = option;
+                item.appendChild(text);
+                item.addEventListener('click', () => {
+                    if (currentBuyOption !== null) {
+                        const oldItem = document.getElementById(`sideMenu-list-optionButton-buy-${currentBuyOption}`);
+                        oldItem.style.boxShadow = "";
+                    }
+                    currentBuyOption = option
+                    item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
+                });
             });
         });
     }
@@ -173,26 +170,36 @@ window.addEventListener('load', (event) => {
             alert("You have the maximum number of stocks.");
             return;
         }
-        stockList.push(currentBuyOption);
-        generateSellOptions(stockList);
-        optionList = generateOptionList();
-        generateBuyOptions(optionList);
-        multipBuys = [1, 5, 10, (capital / 100)]
-        var numStocks = multipBuys[currMultipBuy];
-        capital = capital - (100 * numStocks);
-        capitalTxt.innerHTML = `Capital: ${capital}`;
+        fetch(`${config.apiUri}/api/data/getnames?` + new URLSearchParams({ count: 3 }), {
+            headers: new Headers({
+                "ngrok-skip-browser-warning": "69420",
+            })
+        }).then((result) => {
+            return result.json();
+        }).then((response) => {
 
-        const stockObj = {
-            name: `${currentBuyOption}`,
-            canvas: `canvas${stockObjList.length + 1}`,
-            currStockVal: 100,
-            num: numStocks,
-            slope: 0,
-            prevX: 0,
-            prevY: 100
-        }
+            stockList.push(currentBuyOption);
+            generateSellOptions(stockList);
+            optionList = response.names;
+            console.log("optionList: ", optionList)
+            generateBuyOptions(optionList);
+            multipBuys = [1, 5, 10, (capital / 100)]
+            var numStocks = multipBuys[currMultipBuy];
+            capital = capital - (100 * numStocks);
+            capitalTxt.innerHTML = `Capital: ${capital}`;
 
-        stockObjList.push(stockObj);
+            const stockObj = {
+                name: `${currentBuyOption}`,
+                canvas: `canvas${stockObjList.length + 1}`,
+                currStockVal: 100,
+                num: numStocks,
+                slope: 0,
+                prevX: 0,
+                prevY: 100
+            }
+
+            stockObjList.push(stockObj);
+        });
     }
 
     function sell() {

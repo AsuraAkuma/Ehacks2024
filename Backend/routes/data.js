@@ -10,6 +10,6 @@ router.get('/getnames', async (req, res) => {
     for (let i = 0; i < count; i++) {
         names[i] = getName();
     }
-    res.send({ names: names });
+    res.send({ success: true, names: names });
 });
 module.exports = router;
