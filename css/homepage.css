@@ -1,0 +1,120 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb(88,88,88);
+}
+
+.header {
+    position: relative;
+    width: 100vw; /* Width of the rectangle */
+    height: 10vh; /* Height of the rectangle */
+    background-color: grey; /* Background color of the rectangle */
+    border-radius: 10px;
+}
+
+.Container {
+    position: relative;
+    width: 100%; /* Width of the rectangle */
+    height: 90vh; /* Height of the rectangle */
+    background-color: rgb(101, 121, 101); /* Background color of the rectangle */
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.Container_Side_Bar {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(151, 149, 149);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.Container_Middle_Bar {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    background-color: rgb(102, 102, 102);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.Recent_Games {
+    position: relative;
+    width: 26%;
+    height: 200px;
+    background-color: rgb(102, 102, 102);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+
+    top: -550px;
+    left: 10px;
+}
+
+.Performance {
+    position: relative;
+    width: 26%;
+    height: 260px;
+    background-color: rgb(106, 86, 86);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+
+    top: -500px;
+    left: 10px;
+}
+
+.Leaderboard {
+    position: relative;
+    width: 26%;
+    height: 515px;
+    background-color: rgb(106, 86, 86);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+
+    top: -1015px;
+    left: 935px; 
+}
+
+.Game_Modes {
+    position: relative;
+    width: 40%; /* Width of the rectangle */
+    height: 20px; /* Height of the rectangle */
+    background-color: rgb(101, 121, 101); /* Background color of the rectangle */
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.Timeless {
+    padding: 10px;
+    background-color: rgb(118, 7, 7); /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    top: -1500px;
+    left: 1000px;
+}
