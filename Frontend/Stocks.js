@@ -29,7 +29,7 @@ var currMultipSell = 0;
 // init capital
 var capital = 1000;
 const multipVals = ['1', '5', '10', 'All'];
-var multipBuys = [1, 5, 10, (capital / 100)]
+var multipBuys = [1, 5, 10, Math.floor(capital / 100)]
 
 
 
