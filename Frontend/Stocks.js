@@ -43,6 +43,7 @@ window.addEventListener('load', (event) => {
     let currentOption = null;
     optionList = generateOptionList();
     generateBuyOptions(optionList);
+
     sellButton.addEventListener('click', () => {
         sell();
     })
@@ -151,30 +152,5 @@ window.addEventListener('load', (event) => {
             item.value = `x${multipVals[currMultipSell]}`;
         }
     }
-
-    function updateGraphs(ctx, x1, y1, x2, y2, color, width) {
-        canvasList.forEach((ctx) => {
-            ctx.beginPath()
-            ctx.moveTo(0, startVal);
-            ctx.lineTo(prevx + 4, y2);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = width;
-            ctx.stroke();
-        });
-    };
-
-    function updateGraphs(canvasList) {
-        canvasList.forEach((ctx) => {
-            ctx.moveTo(prevx, prevy);
-            ctx.lineTo(prevx + 4, y2);
-        });
-    }
-
-    function run(condition) {
-        while (!(condition)) {
-            setInterval(updateGraphs(), 4000)
-        }
-    }
 });
 
-run();
