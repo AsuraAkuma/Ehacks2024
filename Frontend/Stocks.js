@@ -37,7 +37,7 @@ let stockObjList = [];
 // Company names
 function getNames(count) {
     let names;
-    fetch(`${config.apiUri}/api/data/getname`).then((result) => {
+    fetch(`${config.apiUri}/api/data/getnames?` + new URLSearchParams({ count: count })).then((result) => {
         return result.json();
     }).then((response) => {
         names = response;
