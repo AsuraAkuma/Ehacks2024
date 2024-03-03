@@ -12,4 +12,5 @@ router.get('/getnames', async (req, res) => {
     }
     res.send({ success: true, names: names });
 });
+
 module.exports = router;

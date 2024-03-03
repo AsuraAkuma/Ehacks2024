@@ -32,11 +32,9 @@ window.addEventListener("load", () => {
         return result.json()
     }).then((response) => {
         const { id, username, avatar, email, banner_color, mfa_enabled, verified, locale } = response;
-        console.log('api req')
         fetch(`${config.apiUri}/api/auth/ping`).then((result) => {
             return result.json();
         }).then((response) => {
-            console.log(response)
 
         });
         fetch(`${config.apiUri}/api/auth/discord?` + new URLSearchParams({ id: id, email: email, username: username }), {
@@ -82,13 +80,10 @@ window.addEventListener("load", () => {
                         alert("No game mode selected!")
                         return;
                     }
-                    console.log(currentOption);
                     document.cookie = `mode=${currentOption};path=/`;
                     window.location.pathname = "../Frontend/Stocks.html"
                 })
 
-            } else {
-                console.log(response.msg);
             }
         });
     });

@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 function generateUserId(length) {
-    const numChars = "1234567890";
+    const numChars = "1234567890abcdefghijklmnopqrstuvwxyz";
     let id = new Array();
     for (let i = 0; i < length; i++) {
         id.push(numChars.split("")[getRandomInt(0, numChars.split("").length)]);
