@@ -1,5 +1,3 @@
-import { grabFromNames } from "../Backend/functions";
-
 // get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
@@ -37,7 +35,7 @@ let stockList = [];
 let stockObjList = [];
 
 // Page load event listener
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
     // currentOption
     let currentBuyOption = null;
     let currentSellOption = null;
@@ -58,6 +56,7 @@ window.addEventListener('load', (event) => {
         let list = []
         for (let i = 0; i < 3; i++) {
             list.push(grabFromNames());
+            console.log("in")
         }
         return list
     }
