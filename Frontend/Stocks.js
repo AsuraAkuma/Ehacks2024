@@ -1,4 +1,4 @@
-import config from './config.json' assert { type: "json" };
+import config from '../Pages/config.json' assert { type: "json" };
 
 
 // get canvas elements
