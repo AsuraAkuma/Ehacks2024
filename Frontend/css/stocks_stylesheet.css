@@ -13,6 +13,13 @@
 h2 {
     font-size: 2.25em;
     margin-top: 10%;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2em;
+    margin-top: 10%;
+    text-align: center;
 }
 
 canvas {
@@ -27,14 +34,12 @@ canvas {
     width: 100vw;
     display: flex;
     flex-direction: row;
-    border: 2px solid red;
 }
 
 .sideMenu {
     position: relative;
     width: 20%;
     height: 100%;
-    border: 2px solid red;
     text-align: center;
 }
 
@@ -72,6 +77,11 @@ canvas {
     border: 2px solid red;
 }
 
+#capital {
+    display: block;
+    text-align: center;
+}
+
 #buyButton {
     width: 80%;
     height: 10%;
@@ -89,13 +99,13 @@ canvas {
     font-size: 2em;
 }
 
-#multipButton-sell {
+#multipButton-multip-buy {
     width: 40%;
     height: 10%;
     font-size: 2em;
 }
 
-#multipButton-multip-buy {
+#multipButton-sell {
     width: 40%;
     height: 10%;
     font-size: 2em;

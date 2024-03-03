@@ -24,9 +24,10 @@ const multipButtonSell = document.getElementById("multipButton-multip-sell");
 var currMultipBuy = 0;
 var currMultipSell = 0;
 const multipVals = ['1', '5', '10', 'All'];
+var multipBuys = [1, 5, 10, (capital / 100)]
 
-// init captial
-var captial = 1000;
+// init capital
+var capital = 1000;
 
 // currentOption
 var currentOption = null;
@@ -37,6 +38,8 @@ let stockList = [];
 
 // Page load event listener
 window.addEventListener('load', (event) => {
+    var capitalTxt = document.getElementById("capital");
+    capitalTxt.innerHTML = `Capital: ${capital}`;
     let currentOption = null;
     optionList = generateOptionList();
     generateBuyOptions(optionList);
@@ -51,15 +54,6 @@ window.addEventListener('load', (event) => {
     multipButtonSell.addEventListener('click', () => {
         multiplier("multipButton-multip-sell");
     })
-
-    function createLine(x1, y1, x2, y2, color, width) {
-        ctx.beginPath()
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.strokeStyle = color;
-        ctx.lineWidth = width;
-        ctx.stroke();
-    };
 
     function generateOptionList() {
         let list = ['Option 1', 'Option 2', 'Option 3']
@@ -85,7 +79,6 @@ window.addEventListener('load', (event) => {
                 }
                 currentOption = option
                 item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
-                console.log(currentOption);
             });
         });
     }
@@ -98,6 +91,7 @@ window.addEventListener('load', (event) => {
     function generateSellOptions(stocks) {
         if (stocks[stocks.length - 1] === null) {
             stocks.splice(stocks.length - 1, 1);
+            capital = capital + (multipBuys[currMultipBuy] * 100);
             return;
         }
         sidemenuSellList.innerHTML = "";
@@ -129,7 +123,10 @@ window.addEventListener('load', (event) => {
         stockList.push(stock);
         generateSellOptions(stockList);
         generateBuyOptions(optionList);
-        captial = capital - (stockPrice * numStocks)
+        multipBuys = [1, 5, 10, (capital / 100)]
+        var numStocks = multipBuys[currMultipBuy];
+        capital = capital - (100 * numStocks);
+        capitalTxt.innerHTML = `Capital: ${capital}`;
     }
 
     function sell() {
@@ -154,5 +151,30 @@ window.addEventListener('load', (event) => {
             item.value = `x${multipVals[currMultipSell]}`;
         }
     }
+
+    function updateGraphs(ctx, x1, y1, x2, y2, color, width) {
+        canvasList.forEach((ctx) => {
+            ctx.beginPath()
+            ctx.moveTo(0, startVal);
+            ctx.lineTo(prevx + 4, y2);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = width;
+            ctx.stroke();
+        });
+    };
+
+    function updateGraphs(canvasList) {
+        canvasList.forEach((ctx) => {
+            ctx.moveTo(prevx, prevy);
+            ctx.lineTo(prevx + 4, y2);
+        });
+    }
+
+    function run(condition) {
+        while (!(condition)) {
+            setInterval(updateGraphs(), 4000)
+        }
+    }
 });
 
+run();
