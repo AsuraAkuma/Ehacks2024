@@ -144,7 +144,6 @@ window.addEventListener('load', (event) => {
         }
         sidemenuSellList.innerHTML = "";
         stocks.forEach((stock) => {
-            console.log(stock);
             const item = document.createElement("li");
             item.className = "sideMenu-list-optionButton";
             item.id = `sideMenu-list-optionButton-sell-${stock}`;
@@ -201,6 +200,7 @@ window.addEventListener('load', (event) => {
                 prevY: 100
             }
             document.getElementById(stockObj.canvas).style.display = "block";
+            currentBuyOption = null;
             stockObjList.push(stockObj);
         });
     }
