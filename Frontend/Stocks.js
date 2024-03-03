@@ -105,10 +105,7 @@ window.addEventListener('load', (event) => {
 
     function generateOptionList() {
         let list = []
-        for (let i = 0; i < 3; i++) {
-            list.push(grabFromNames());
-            console.log("in")
-        }
+        list = getNames(3);
         return list
     }
 
