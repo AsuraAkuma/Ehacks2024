@@ -1,3 +1,5 @@
+import { getRandomInt } from "../Backend/functions";
+
 // get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
@@ -53,7 +55,10 @@ window.addEventListener('load', (event) => {
     })
 
     function generateOptionList() {
-        let list = ['Option 1', 'Option 2', 'Option 3']
+        let list = []
+
+        getRandomInt(0, 1);
+        list.push();
 
         return list
     }
@@ -124,6 +129,7 @@ window.addEventListener('load', (event) => {
         }
         stockList.push(currentBuyOption);
         generateSellOptions(stockList);
+        generateOptionList();
         generateBuyOptions(optionList);
         multipBuys = [1, 5, 10, (capital / 100)]
         var numStocks = multipBuys[currMultipBuy];
