@@ -11,13 +11,14 @@
 body {
     background-color: rgb(88,88,88);
     overflow: hidden;
+    /* url('./Gamemodes/ehacks_medieval1.png'); */
 }
 
 .header {
     position: relative;
     width: 100vw; /* Width of the rectangle */
     height: 10vh; /* Height of the rectangle */
-    background-color: grey; /* Background color of the rectangle */
+    background-image: url('./Gamemodes/ehacks_medieval1.png'); ; /* Background color of the rectangle */
     /* border-radius: 10px; */
 }
 
