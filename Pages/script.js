@@ -10,8 +10,8 @@ window.addEventListener("load", () => {
     let accessToken;
     let tokenType;
     if (fragment.toString() !== '') {
-        document.cookie = `accessToken=${fragment.get('access_token')}`;
-        document.cookie = `tokenType=${fragment.get('token_type')}`;
+        document.cookie = `accessToken=${fragment.get('access_token')};path=/`;
+        document.cookie = `tokenType=${fragment.get('token_type')};path=/`;
         window.location.href = `${window.location.origin}${window.location.pathname}`;
     } else {
         document.cookie.split(";").forEach((cookie) => {
@@ -83,7 +83,7 @@ window.addEventListener("load", () => {
                         return;
                     }
                     console.log(currentOption);
-                    document.cookie = `mode=${currentOption}`;
+                    document.cookie = `mode=${currentOption};path=/`;
                     window.location.pathname = "../Frontend/Stocks.html"
                 })
 
