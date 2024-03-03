@@ -1,3 +1,6 @@
+import config from '../Pages/config.json' assert { type: "json" };
+
+
 // get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
@@ -40,7 +43,7 @@ function getNames(count) {
     fetch(`${config.apiUri}/api/data/getnames?` + new URLSearchParams({ count: count })).then((result) => {
         return result.json();
     }).then((response) => {
-        names = response;
+        names = response.names;
     });
     return names;
 }
@@ -102,10 +105,7 @@ window.addEventListener('load', (event) => {
 
     function generateOptionList() {
         let list = []
-        for (let i = 0; i < 3; i++) {
-            list.push(grabFromNames());
-            console.log("in")
-        }
+        list = getNames(3);
         return list
     }
 
