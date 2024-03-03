@@ -1,5 +1,7 @@
 {
     "mongoPath": "mongodb+srv://ehacks2024aog:e04SDZsNaowwV8NV@mythostock.9simopq.mongodb.net/MythoStock?retryWrites=true&w=majority&appName=MythoStock",
     "userIdLength": 8,
-    "port": 3000
+    "port": 8080,
+    "sessionSecret": "Q8%G61!9F8pb%O$ZSvr9!t0v6c*R#@",
+    "apiUri": "https://20eb-206-196-126-250.ngrok-free.app"
 }
