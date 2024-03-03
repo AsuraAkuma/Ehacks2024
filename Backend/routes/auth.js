@@ -67,7 +67,6 @@ router.get('/ping', async (req, res) => {
 router.get('/discord', async (req, res) => {
     try {
         const { id, email, username } = req.query;
-        console.log(username)
         const result = await userSchema.findOne({ email: email });
         if (result) {
             res.status(200).send({ success: true, msg: "success" });
@@ -89,7 +88,6 @@ router.get('/discord', async (req, res) => {
                     upsert: true
                 }
             );
-            console.log('test')
             res.status(200).send({ success: true, msg: "success" });
         };
     } catch (error) {

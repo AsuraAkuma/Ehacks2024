@@ -32,10 +32,8 @@ function main() {
     response = response.replace('<companyname>', `${named.replace("\r", "")}`); // Replace companyname placeholder with the selected name
     response = response.replace('<amount>', `${amount}%`); // Replace amount placeholder with the generated amount
 
-    console.log(response); // Print the modified response
 
     const dblAmount = amount / 100.0; // Convert the amount to a double
-    console.log(dblAmount); // Print the double amount
 }
 
 main(); // Call the main function to execute the program
