@@ -60,4 +60,38 @@ router.get('/login', async (req, res) => {
         res.send({ success: false, msg: error });
     };
 });
+router.get('/ping', async (req, res) => {
+    res.send({ msg: "pong" });
+});
+
+router.get('/discord', async (req, res) => {
+    try {
+        const { id, email, username } = req.query;
+        const result = await userSchema.findOne({ email: email });
+        if (result) {
+            res.status(200).send({ success: true, msg: "success" });
+        } else {
+            await userSchema.findOneAndUpdate(
+                {
+                    _id: id
+                },
+                {
+                    _id: id,
+                    email: email,
+                    username: username,
+                    wins: 0,
+                    loses: 0,
+                    xp: 0,
+                    level: 0
+                },
+                {
+                    upsert: true
+                }
+            );
+            res.status(200).send({ success: true, msg: "success" });
+        };
+    } catch (error) {
+        res.send({ success: false, msg: error });
+    };
+});
 module.exports = router;
