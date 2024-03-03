@@ -24,25 +24,26 @@ const multipButtonSell = document.getElementById("multipButton-multip-sell");
 var currMultipBuy = 0;
 var currMultipSell = 0;
 const multipVals = ['1', '5', '10', 'All'];
+var multipBuys = [1, 5, 10, (capital / 100)]
 
-// init captial
-var captial = 1000;
+// init capital
+var capital = 1000;
 
 // currentOption
-var currentOption = null;
-var currentStock = null;
+var currentBuyOption = null;
+var currentSellOption = null;
 
 let optionList = [];
 let stockList = [];
+let stockObjList = [];
 
 // Page load event listener
 window.addEventListener('load', (event) => {
+    var capitalTxt = document.getElementById("capital");
+    capitalTxt.innerHTML = `Capital: ${capital}`;
     let currentOption = null;
     optionList = generateOptionList();
     generateBuyOptions(optionList);
-    sellButton.addEventListener('click', () => {
-        sell();
-    })
 
     multipButtonBuy.addEventListener('click', () => {
         multiplier("multipButton-multip-buy");
@@ -51,15 +52,6 @@ window.addEventListener('load', (event) => {
     multipButtonSell.addEventListener('click', () => {
         multiplier("multipButton-multip-sell");
     })
-
-    function createLine(x1, y1, x2, y2, color, width) {
-        ctx.beginPath()
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.strokeStyle = color;
-        ctx.lineWidth = width;
-        ctx.stroke();
-    };
 
     function generateOptionList() {
         let list = ['Option 1', 'Option 2', 'Option 3']
@@ -72,51 +64,54 @@ window.addEventListener('load', (event) => {
         options.forEach((option) => {
             const item = document.createElement("li");
             item.className = "sideMenu-list-optionButton";
-            item.id = `sideMenu-list-optionButton-${option}`;
+            item.id = `sideMenu-list-optionButton-buy-${option}`;
             sidemenuBuyList.appendChild(item);
             const text = document.createElement("h2");
             text.className = "sideMenu-list-optionButton-text";
             text.innerHTML = option;
             item.appendChild(text);
             item.addEventListener('click', () => {
-                if (currentOption !== null) {
-                    const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentOption}`);
+                if (currentBuyOption !== null) {
+                    const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentBuyOption}`);
                     oldItem.style.boxShadow = "";
                 }
-                currentOption = option
+                currentBuyOption = option
                 item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
-                console.log(currentOption);
             });
         });
     }
 
     buyButton.addEventListener('click', () => {
+        buy(currentBuyOption);
+    });
 
-        buy(currentOption);
+    sellButton.addEventListener('click', () => {
+        sell(currentSellOption);
     });
 
     function generateSellOptions(stocks) {
         if (stocks[stocks.length - 1] === null) {
             stocks.splice(stocks.length - 1, 1);
+            capital = capital + (multipBuys[currMultipBuy] * 100);
             return;
         }
         sidemenuSellList.innerHTML = "";
         stocks.forEach((stock) => {
             const item = document.createElement("li");
             item.className = "sideMenu-list-optionButton";
-            item.id = `sideMenu-list-optionButton-${stock}`;
+            item.id = `sideMenu-list-optionButton-sell-${stock}`;
             sidemenuSellList.appendChild(item);
             const text = document.createElement("h2");
             text.className = "sideMenu-list-optionButton-text";
             text.innerHTML = stock;
             item.appendChild(text);
             item.addEventListener('click', () => {
-                if (currentStock !== null) {
-                    const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentStock}`);
+                if (currentSellOption !== null) {
+                    const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentSellOption}`);
                     oldItem.style.boxShadow = "";
                 }
                 item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
-                currentStock = stock;
+                currentSellOption = stock;
             });
         });
     }
@@ -129,11 +124,36 @@ window.addEventListener('load', (event) => {
         stockList.push(stock);
         generateSellOptions(stockList);
         generateBuyOptions(optionList);
-        captial = capital - (stockPrice * numStocks)
+        multipBuys = [1, 5, 10, (capital / 100)]
+        var numStocks = multipBuys[currMultipBuy];
+        capital = capital - (100 * numStocks);
+        capitalTxt.innerHTML = `Capital: ${capital}`;
+
+        const stockObj = {
+            name: `${stock}`,
+            currStockVal: 100,
+            num: numStocks,
+            prevX: 0,
+            prevY: 0
+        }
+
+        stockObjList.push(stockObj);
     }
 
-    function sell() {
-
+    function sell(currentSellOption) {
+        console.log(stockObjList)
+        var chosenObj;
+        stockObjList.forEach(currStockObj => {
+            if (currStockObj.name === currentSellOption) {
+                chosenObj = currStockObj;
+            }
+        });
+        capital = capital + (chosenObj.currStockVal * chosenObj.num);
+        document.getElementById("capital").innerHTML = `Capital: ${capital}`
+        if (chosenObj.num === 0) {
+            document.getElementById(`sideMenu-list-optionButton-sell-${chosenObj.name}`).remove();
+            stockObjList = stockObjList.filter(s => s.name !== chosenObj.name)
+        }
     }
 
     function multiplier(elemID) {
@@ -153,6 +173,25 @@ window.addEventListener('load', (event) => {
             let item = document.getElementById('multipButton-multip-sell');
             item.value = `x${multipVals[currMultipSell]}`;
         }
+
+    }
+
+    function updateGraph() {
+        stockObjList.forEach((stock) => {
+            stock
+        });
+    }
+
+    function getEvent() {
+
+    }
+
+    function timerStart() {
+        const timer = setTimeout(() => {
+            updateGraph();
+            getEvent();
+            timerStart();
+        }, 4000);
+        clearTimeout(timer);
     }
 });
-
