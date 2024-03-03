@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="./Stocks.js" type="module"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/stocks_stylesheet.css" />
-    <title>Document</title>
-  </head>
-  <body class="body" id="body">
-    <div class="sideMenu" id="sideMenu-buy">
-      <h2>BUY</h2>
-      <ul class="sideMenu-list" id="sideMenu-list-buy"></ul>
-      <div>
+
+<head>
+  <script src="./Stocks.js" type="module"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/stocks_stylesheet.css" />
+  <title>Stocks</title>
+</head>
+
+<body class="body" id="body">
+  <div class="sideMenu" id="sideMenu-buy">
+    <h2>BUY</h2>
+    <ul class="sideMenu-list" id="sideMenu-list-buy"></ul>
+    <div>
       <input id="multipButton-buy" type="button" value="Buy"></input>
       <input id="multipButton-multip-buy" type="button" value="x1"></input>
-      </div>
     </div>
-    <div class="center" id="canvasContainer">
-      <canvas class="canvas" id="canvas1"></canvas>
-      <canvas class="canvas" id="canvas2"></canvas>
-      <canvas class="canvas" id="canvas3"></canvas>
-      <canvas class="canvas" id="canvas4"></canvas>
+  </div>
+  <div class="center" id="canvasContainer">
+    <canvas class="canvas" id="canvas1"></canvas>
+    <canvas class="canvas" id="canvas2"></canvas>
+    <canvas class="canvas" id="canvas3"></canvas>
+    <canvas class="canvas" id="canvas4"></canvas>
+  </div>
+  <div class="sideMenu" id="sideMenu-sell">
+    <h2>SELL</h2>
+    <ul class="sideMenu-list" id="sideMenu-list-sell"></ul>
+    <div>
+      <input id="multipButton-sell" type="button" value="Sell"></input>
+      <input id="multipButton-multip-sell" type="button" value="x1"></input>
     </div>
-    <div class="sideMenu" id="sideMenu-sell">
-      <h2>SELL</h2>
-      <ul class="sideMenu-list" id="sideMenu-list-sell"></ul>
-      <div>
-        <input id="multipButton-sell" type="button" value="Sell"></input>
-        <input id="multipButton-multip-sell" type="button" value="x1"></input>
-      </div>
-    </div>
-  </body>
+  </div>
+</body>
+
 </html>
