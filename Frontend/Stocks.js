@@ -1,6 +1,3 @@
-const socket = io('ws://localhost:8080');
-import config from '../Pages/config.json' assert { type: "json" };
-
 // get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
@@ -103,8 +100,10 @@ window.addEventListener('load', (event) => {
     })
 
     function generateOptionList() {
-        let list = ['Option 1', 'Option 2', 'Option 3']
-
+        let list = []
+        for (let i = 0; i < 3; i++) {
+            list.push(grabFromNames());
+        }
         return list
     }
 
@@ -174,6 +173,7 @@ window.addEventListener('load', (event) => {
         }
         stockList.push(currentBuyOption);
         generateSellOptions(stockList);
+        optionList = generateOptionList();
         generateBuyOptions(optionList);
         multipBuys = [1, 5, 10, (capital / 100)]
         var numStocks = multipBuys[currMultipBuy];
