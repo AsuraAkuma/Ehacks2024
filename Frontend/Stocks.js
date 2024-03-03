@@ -29,9 +29,6 @@ var multipBuys = [1, 5, 10, (capital / 100)]
 // init capital
 var capital = 1000;
 
-// currentOption
-var currentBuyOption = null;
-var currentSellOption = null;
 
 let optionList = [];
 let stockList = [];
@@ -39,6 +36,9 @@ let stockObjList = [];
 
 // Page load event listener
 window.addEventListener('load', (event) => {
+    // currentOption
+    let currentBuyOption = null;
+    let currentSellOption = null;
     var capitalTxt = document.getElementById("capital");
     capitalTxt.innerHTML = `Capital: ${capital}`;
     optionList = generateOptionList();
@@ -81,11 +81,11 @@ window.addEventListener('load', (event) => {
     }
 
     buyButton.addEventListener('click', () => {
-        buy(currentBuyOption);
+        buy();
     });
 
     sellButton.addEventListener('click', () => {
-        sell(currentSellOption);
+        sell();
     });
 
     function generateSellOptions(stocks) {
@@ -107,6 +107,7 @@ window.addEventListener('load', (event) => {
             item.addEventListener('click', () => {
                 if (currentSellOption !== null) {
                     const oldItem = document.getElementById(`sideMenu-list-optionButton-sell-${currentSellOption}`);
+                    console.log(currentSellOption)
                     oldItem.style.boxShadow = "";
                 }
                 //console.log(currentSellOption);
@@ -116,12 +117,12 @@ window.addEventListener('load', (event) => {
         });
     }
 
-    function buy(stock) {
+    function buy() {
         if (stockList.length === 4) {
             alert("You have the maximum number of stocks.");
             return;
         }
-        stockList.push(stock);
+        stockList.push(currentBuyOption);
         generateSellOptions(stockList);
         generateBuyOptions(optionList);
         multipBuys = [1, 5, 10, (capital / 100)]
@@ -130,34 +131,43 @@ window.addEventListener('load', (event) => {
         capitalTxt.innerHTML = `Capital: ${capital}`;
 
         const stockObj = {
-            name: `${stock}`,
+            name: `${currentBuyOption}`,
+            canvas: `canvas${stockObjList.length + 1}`,
             currStockVal: 100,
             num: numStocks,
+            slope: 0,
             prevX: 0,
-            prevY: 0
+            prevY: 100
         }
 
         stockObjList.push(stockObj);
     }
 
-    function sell(currentSellOption) {
+    function sell() {
         if (currentSellOption === null) {
             return;
         }
         var chosenObj;
-        stockObjList.forEach(currStockObj => {
+        stockObjList.forEach((currStockObj) => {
             if (currStockObj.name === currentSellOption) {
                 chosenObj = currStockObj;
             }
         });
         var numToSell = document.getElementById("multipButton-multip-sell").value.split("x").join("");
+        if (numToSell > chosenObj.num) {
+            numToSell = chosenObj.num;
+            chosenObj['num'] = 0;
+        }
         capital = capital + (chosenObj.currStockVal * numToSell);
-        chosenObj.num = chosenObj.num - numToSell;
+        if (chosenObj.num !== 0) {
+            chosenObj['num'] = chosenObj.num - numToSell;
+        }
         document.getElementById("capital").innerHTML = `Capital: ${capital}`
         if (chosenObj.num === 0) {
             document.getElementById(`sideMenu-list-optionButton-sell-${chosenObj.name}`).remove();
             stockObjList = stockObjList.filter(s => s.name !== chosenObj.name)
             stockList = stockList.filter(s => s !== chosenObj.name)
+            currentSellOption = null;
         }
     }
 
@@ -178,17 +188,41 @@ window.addEventListener('load', (event) => {
             let item = document.getElementById('multipButton-multip-sell');
             item.value = `x${multipVals[currMultipSell]}`;
         }
-
     }
 
     function updateGraph() {
-        stockObjList.forEach((stock) => {
-            stock
+        stockObjects.forEach((stockObj) => {
+            let chosenCtx;
+            if (stockObj.canvas === "canvas1") {
+                chosenCtx = ctx1;
+            }
+            if (stockObj.canvas === "canvas2") {
+                chosenCtx = ctx2;
+            }
+            if (stockObj.canvas === "canvas3") {
+                chosenCtx = ctx3;
+            }
+            if (stockObj.canvas === "canvas4") {
+                chosenCtx = ctx4;
+            }
+            chosenCtx.beginPath();
+            chosenCtx.moveTo(stockObj.prevX, stockObj.prevY);
+            chosenCtx.lineTo(stockObj.prevX + 4, stockObj.prevY + (slope * 4));
+            if (slope < 0) {
+                chosenCtx.strokeStyle = 'red';
+            }
+            else {
+                chosenCtx.strokeStyle = 'green';
+            }
+            chosenCtx.stroke();
+
+            stockObj.prevX = stockObj.prevX + 4;
+            stockObj.prevY = stockObj.prevY + (slope * 4);
         });
     }
 
     function getEvent() {
-
+        return;
     }
 
     function timerStart() {
@@ -196,7 +230,10 @@ window.addEventListener('load', (event) => {
             updateGraph();
             getEvent();
             timerStart();
+            console.log('run');
         }, 4000);
         clearTimeout(timer);
     }
+
+    timerStart();
 });
