@@ -4,6 +4,8 @@ const io = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 // connect to database
+const mongo = require('./mongo');
+const { sessionSecret, mongoPath, port } = require('./config.json');
 mongo();
 // listen for player connection
 io.on('connection', (socket) => {
@@ -21,7 +23,7 @@ const app = express();
 const routes = require('./routes');
 const session = require('express-session');
 const Store = require('connect-mongo');
-const whitelist = ['http://127.0.0.1:3000', 'http://localhost:3000', "http://localhost:5500", "http://127.0.0.1:5500"];
+const whitelist = ['http://127.0.0.1:3000', 'http://localhost:3000', "http://localhost:5500", "http://127.0.0.1:5500", "https://9d2a-206-196-126-250.ngrok-free.app"];
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {

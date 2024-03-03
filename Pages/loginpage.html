@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <style>
         body {
             background-image: url('./Gamemodes/ehacks_medieval1.png');
@@ -24,23 +24,9 @@
 <body>
     <div class="login-container">
         <h2>Welcome Back!</h2>
-        <form class="login-form">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" id="login-button">Login</button>
-        </form>
-        <br>
         <div class="oauth-buttons">
-            <a href="discord-auth-url" class="discord-button">Sign in with Discord</a>
-        </div>
-        <div class="create-account">
-            <p>Don't have an account? <a href="registration.html">Create one</a></p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1213432810732257330&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fpages%2Fhomepage.html&scope=identify+email"
+                class="discord-button">Sign in with Discord</a>
         </div>
     </div>
 </body>
