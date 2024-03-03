@@ -1,3 +1,6 @@
+const socket = io('ws://localhost:8080');
+import config from '../Pages/config.json' assert { type: "json" };
+
 // get canvas elements
 const canvas1 = document.getElementById('canvas1');
 const canvas2 = document.getElementById('canvas2');
@@ -34,8 +37,55 @@ let optionList = [];
 let stockList = [];
 let stockObjList = [];
 
+// Company names
+function getNames(count) {
+    let names;
+    fetch(`${config.apiUri}/api/data/getname`).then((result) => {
+        return result.json();
+    }).then((response) => {
+        names = response;
+    });
+    return names;
+}
 // Page load event listener
 window.addEventListener('load', (event) => {
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    let accessToken;
+    let tokenType;
+    let gameMode = "endless";
+    if (fragment.toString() !== '') {
+        document.cookie = `accessToken=${fragment.get('access_token')}`;
+        document.cookie = `tokenType=${fragment.get('token_type')}`;
+        window.location.href = `${window.location.origin}${window.location.pathname}`;
+    } else {
+        document.cookie.split(";").forEach((cookie) => {
+            const name = cookie.split(" ").join("").split("=")[0];
+            const value = cookie.split(" ").join("").split("=")[1];
+            if (name === 'accessToken') {
+                accessToken = value;
+            } else if (name === 'tokenType') {
+                tokenType = value;
+            } else if (name === 'mode') {
+                gameMode = value;
+            };
+        })
+    }
+    fetch('https://discord.com/api/users/@me', {
+        headers: {
+            authorization: `${tokenType} ${accessToken}`,
+        },
+    }).then((result) => {
+        return result.json()
+    }).then((response) => {
+        const { id, username, avatar, email, banner_color, mfa_enabled, verified, locale } = response;
+        socket.emit("start-game", { gamemode: gameMode, players: [id] });
+        console.log("start game message emitted")
+
+
+    });
+    // Webhooks Events
+
+
     // currentOption
     let currentBuyOption = null;
     let currentSellOption = null;
