@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<script>
+    // Fetch profile information from your backend/API
+    fetch('https://discord.com/api/users/@me', {
+    headers: {
+        authorization: `${tokenType} ${accessToken}`,
+    },
+}).then((result) => {
+    return result.json()
+}).then((response) => {
+    const { id, username, avatar, email, banner_color, mfa_enabled, verified, locale } = response;
+    const avatarEle = document.getElementById('avatar');
+    avatarEle.src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.gif`;
+})
+    .catch(error => {
+        console.error('Error fetching profile:', error);
+    });
+</script>
+<body>
+    
+    <div id="profile">
+        <img id="avatar" src=avatarEle.src alt="Avatar">
+        <p id="username"></p>
+        <p id="discriminator"></p>
+    </div>
+
+    
+</body>
+</html>
