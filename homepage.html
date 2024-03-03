@@ -5,17 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Tycoon</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  -->
     <script defer type="module" src="./script.js"></script>
-    <link rel="styleSheet" href="./css/index.css" />
-    <link rel="styleSheet" href="./css/navrail.css" />
+    <link rel="styleSheet" href="./css/homepage.css" />
 </head>
 
 <body>
+
     <header class="header">
 
     </header>
+    <div class="Container">
+        <div class="Container_Side_Bar">
+            <div class="Recent_Games"><b>Recent Games</b></div>
+            <div class="Performance"><b>Performance</b></div>
+        </div>
 
-    <!-- New Game Button -->
+        <div class="Container_Middle_Bar">
+            <div class="Game_Modes">
+                <button id="timed-button" class="Game_Modes_Button">
+                    <h3>Timed</h2>
+                </button>
+                <button id="endless-button" class="Game_Modes_Button">
+                    <h3>Endless</h3>
+                </button>
+                <button id="king-button" class="Game_Modes_Button">
+                    <h3>King of Debt</h4>
+                </button>
+
+            </div>
+            <!-- chart -->
+            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+            <div id="start-button" class="Play">
+                <h4>TRADE</h4>
+            </div>
+
+        </div>
+
+        <div class="Container_Side_Bar">
+            <!-- <div class = "Leaderboard"><b>Leaderboard</b></div> //replace with Mercy's table -->
+        </div>
+    </div>
+
+
     <!-- <a href="./newgame.html" class="new-game-button">New Game</a> -->
 
 </body>
