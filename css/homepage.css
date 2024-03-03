@@ -1,3 +1,8 @@
+@font-face {
+    font-family: BlackChancery;
+    src: url(../Frontend/BLKCHCRY.TTF);
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -5,6 +10,7 @@
 
 body {
     background-color: rgb(88,88,88);
+    overflow: hidden;
 }
 
 .header {
@@ -12,17 +18,15 @@ body {
     width: 100vw; /* Width of the rectangle */
     height: 10vh; /* Height of the rectangle */
     background-color: grey; /* Background color of the rectangle */
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .Container {
     position: relative;
     width: 100%; /* Width of the rectangle */
     height: 90vh; /* Height of the rectangle */
-    background-color: rgb(101, 121, 101); /* Background color of the rectangle */
     display: flex;
     flex-direction: row;
-    border-radius: 10px;
 }
 
 .Container_Side_Bar {
@@ -32,8 +36,6 @@ body {
     background-color: rgb(151, 149, 149);
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
-    border-radius: 10px;
 }
 
 .Container_Middle_Bar {
@@ -41,12 +43,7 @@ body {
     width: 40%;
     height: 100%;
     background-color: rgb(102, 102, 102);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    border: 2px solid black;
-    border-radius: 10px;
+    overflow: hidden;
 }
 
 .Recent_Games {
@@ -92,29 +89,73 @@ body {
     align-content: center;
     border: 2px solid black;
     border-radius: 10px;
-
-    top: -1015px;
-    left: 935px; 
+    top: -100px;
+    left: 100px; 
 }
 
 .Game_Modes {
     position: relative;
+    width: 100%; /* Width of the rectangle */
+    height: 10%; /* Height of the rectangle */
+    display: flex;
+    flex-direction: row;
+    /* border-radius: 10px; */
+    border-style: solid goldpink;
+}
+
+.Game_Modes_Button {
+    position: relative;
+    padding: 1%;
+    background-color: rgb(107, 26, 26); /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    cursor: pointer;
+    height: 80%;
+    width: 33.3%;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+}
+
+.Game_Modes_Button h3 {
+    position: relative;
+     text-align: center;
+     width: 100%;
+     height: min-content;
+     font-size: calc(((1vh+1vw)/2)*2);
+     font-family: BlackChancery ;
+     /* border: 2px solid red; */
+}
+
+ .Play {
+    position: relative;
     width: 40%; /* Width of the rectangle */
-    height: 20px; /* Height of the rectangle */
-    background-color: rgb(101, 121, 101); /* Background color of the rectangle */
+    height: 10%; /* Height of the rectangle */
+    background-color: rgb(66, 182, 221); /* Background color of the rectangle */
     display: flex;
     flex-direction: row;
     border-radius: 10px;
-}
+    border-style: solid black;
+    color:white;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+    text-wrap: center;
+    font-family:BlackChancery;
+    margin-left:150px;
+    top: 450px;
+ }
 
-.Timeless {
-    padding: 10px;
-    background-color: rgb(118, 7, 7); /* Button background color */
-    color: white; /* Button text color */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    top: -1500px;
-    left: 1000px;
-}
+ .Play h4 {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: min-content;
+    font-size: calc(((1vh+1vw)/2)*2);
+    font-family: BlackChancery ;
+ }
+ 
