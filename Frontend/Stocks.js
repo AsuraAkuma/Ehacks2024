@@ -192,8 +192,8 @@ window.addEventListener('load', (event) => {
                             }).then((result) => {
                                 return result.json();
                             }).then((response) => {
-                                const { event } = response;
-                                console.log(event)
+                                const { data } = response;
+                                console.log(data)
                                 totalTime += 20;
                             });
                         } else {
