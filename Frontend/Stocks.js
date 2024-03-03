@@ -199,6 +199,7 @@ window.addEventListener('load', (event) => {
                 prevX: 0,
                 prevY: 100
             }
+            document.getElementById(stockObj.canvas).style.display = "block";
             currentBuyOption = null;
             stockObjList.push(stockObj);
         });

@@ -29,7 +29,7 @@ canvas {
 
 .body {
     position: absolute;
-    background-color: rgb(88,88,88);
+    background-color: rgb(88, 88, 88);
     height: 100%;
     width: 100vw;
     display: flex;
@@ -75,6 +75,7 @@ canvas {
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 2px solid red;
 }
 
 #capital {
@@ -117,7 +118,8 @@ canvas {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 10px; /* Adjust the gap between canvases */
+    gap: 10px;
+    /* Adjust the gap between canvases */
 }
 
 /* .chart-sec {
