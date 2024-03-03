@@ -41,7 +41,6 @@ let stockObjList = [];
 window.addEventListener('load', (event) => {
     var capitalTxt = document.getElementById("capital");
     capitalTxt.innerHTML = `Capital: ${capital}`;
-    let currentOption = null;
     optionList = generateOptionList();
     generateBuyOptions(optionList);
 
@@ -72,7 +71,7 @@ window.addEventListener('load', (event) => {
             item.appendChild(text);
             item.addEventListener('click', () => {
                 if (currentBuyOption !== null) {
-                    const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentBuyOption}`);
+                    const oldItem = document.getElementById(`sideMenu-list-optionButton-buy-${currentBuyOption}`);
                     oldItem.style.boxShadow = "";
                 }
                 currentBuyOption = option
@@ -107,9 +106,10 @@ window.addEventListener('load', (event) => {
             item.appendChild(text);
             item.addEventListener('click', () => {
                 if (currentSellOption !== null) {
-                    const oldItem = document.getElementById(`sideMenu-list-optionButton-${currentSellOption}`);
+                    const oldItem = document.getElementById(`sideMenu-list-optionButton-sell-${currentSellOption}`);
                     oldItem.style.boxShadow = "";
                 }
+                //console.log(currentSellOption);
                 item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
                 currentSellOption = stock;
             });
@@ -141,18 +141,23 @@ window.addEventListener('load', (event) => {
     }
 
     function sell(currentSellOption) {
-        console.log(stockObjList)
+        if (currentSellOption === null) {
+            return;
+        }
         var chosenObj;
         stockObjList.forEach(currStockObj => {
             if (currStockObj.name === currentSellOption) {
                 chosenObj = currStockObj;
             }
         });
-        capital = capital + (chosenObj.currStockVal * chosenObj.num);
+        var numToSell = document.getElementById("multipButton-multip-sell").value.split("x").join("");
+        capital = capital + (chosenObj.currStockVal * numToSell);
+        chosenObj.num = chosenObj.num - numToSell;
         document.getElementById("capital").innerHTML = `Capital: ${capital}`
         if (chosenObj.num === 0) {
             document.getElementById(`sideMenu-list-optionButton-sell-${chosenObj.name}`).remove();
             stockObjList = stockObjList.filter(s => s.name !== chosenObj.name)
+            stockList = stockList.filter(s => s !== chosenObj.name)
         }
     }
 
