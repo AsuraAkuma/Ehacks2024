@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
         if(currentOption !== null) {
             selectKingButton.style.color = "white";
         }  
-        selectKingButton.style.color = "gray";
+        selectKingButton.style.color = "gray ";
         selectEndlessButton.style.color = "white";
         selectTimedButton.style.color = "white";
         currentOption = "king";
