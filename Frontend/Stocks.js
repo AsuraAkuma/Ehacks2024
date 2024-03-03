@@ -144,6 +144,7 @@ window.addEventListener('load', (event) => {
         }
         sidemenuSellList.innerHTML = "";
         stocks.forEach((stock) => {
+            console.log(stock);
             const item = document.createElement("li");
             item.className = "sideMenu-list-optionButton";
             item.id = `sideMenu-list-optionButton-sell-${stock}`;
@@ -152,13 +153,15 @@ window.addEventListener('load', (event) => {
             text.className = "sideMenu-list-optionButton-text";
             text.innerHTML = stock;
             item.appendChild(text);
+
+
             item.addEventListener('click', () => {
                 if (currentSellOption !== null) {
                     const oldItem = document.getElementById(`sideMenu-list-optionButton-sell-${currentSellOption}`);
                     console.log(currentSellOption)
                     oldItem.style.boxShadow = "";
                 }
-                //console.log(currentSellOption);
+                console.log(currentSellOption);
                 item.style.boxShadow = "inset 5px 5px 2px 2px rgb(87, 79, 79)";
                 currentSellOption = stock;
             });
