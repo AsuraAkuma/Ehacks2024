@@ -68,9 +68,16 @@ function getResponse() {
     const dblAmount = amount / 100.0; // Convert the amount to a double
     return { message: response, companyName: named, amount: amount, dblAmount: dblAmount };
 }
+
+function getName() {
+    const names = getCompanyNames(); // Get the array of company names
+    const named = grabFromNames(names); // Select a random company name
+    return named;
+}
 // Exporting the functions for use in other modules
 module.exports = {
     generateUserId,
     getRandomInt,
-    getResponse
+    getResponse,
+    getName
 };

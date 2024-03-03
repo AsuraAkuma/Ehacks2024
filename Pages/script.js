@@ -6,12 +6,6 @@ import config from './config.json' assert { type: "json" };
 
 
 window.addEventListener("load", () => {
-    // var canvas = document.querySelector('viewport');
-    // //resizing it to fit the dimensions of the screen
-    // // canvas.width = window.innterwidth;
-    // // canvas.height = window.innerHeight;
-
-    // console.log('viewport');
     const fragment = new URLSearchParams(window.location.hash.slice(1));
     let accessToken;
     let tokenType;
@@ -88,8 +82,9 @@ window.addEventListener("load", () => {
                         alert("No game mode selected!")
                         return;
                     }
-                    console.log(currentOption)
-                    // window.location.pathname = "./Stocks.html"
+                    console.log(currentOption);
+                    document.cookie = `mode=${currentOption}`;
+                    window.location.pathname = "../Frontend/Stocks.html"
                 })
 
             } else {
