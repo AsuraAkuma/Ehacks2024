@@ -3,10 +3,16 @@
     src: url(../Frontend/BLKCHCRY.TTF);
 }
 
-homepage.css    * {
+* {
     margin: 0px;
     padding: 0px;
 }
+
+/* body {
+    background-color: rgb(88,88,88);
+    overflow: hidden;
+    /* url('./Gamemodes/ehacks_medieval1.png'); *
+} */
 
 body{
     position: absolute;
@@ -15,6 +21,40 @@ body{
     overflow: hidden;
     background-color: rgb(88,88,88);
 }
+.header {
+    position: relative;
+    width: 100vw; /* Width of the rectangle */
+    height: 10vh; /* Height of the rectangle */
+    background-image: url('./Gamemodes/ehacks_medieval1.png'); ; /* Background color of the rectangle */
+    /* border-radius: 10px; */
+}
+
+.Container {
+    position: relative;
+    width: 100%; /* Width of the rectangle */
+    height: 90vh; /* Height of the rectangle */
+    display: flex;
+    flex-direction: row;
+}
+
+.Container_Side_Bar {
+    position: relative;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(151, 149, 149);
+    display: flex;
+    flex-direction: column;
+}
+
+.Container_Middle_Bar {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    background-color: rgb(102, 102, 102);
+    overflow: hidden;
+}
+
+
 
 .header {
     position: absolute;
@@ -67,6 +107,7 @@ body{
     /* border-radius: 10px; */
 }
 
+
 .Recent_Games {
     position: relative;
     width: 90%;
@@ -91,15 +132,18 @@ body{
     top: 6.6%;
     background-color: rgb(106, 86, 86);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
+    flex-direction: column;
     border: 2px solid black;
     font-family: BlackChencery;
     border-radius: 20px;
 
 }
-
+.performance-text {
+    position: relative;
+    background: none;
+    width: 100%;
+    text-align: center;
+}
 .Container_Side_Bar_List {
     position: relative;
     height: 100%;
