@@ -3,5 +3,5 @@
     "userIdLength": 8,
     "port": 8080,
     "sessionSecret": "Q8%G61!9F8pb%O$ZSvr9!t0v6c*R#@",
-    "apiUri": "https://314d-206-196-126-250.ngrok-free.app"
+    "apiUri": "http://localhost:8080"
 }
