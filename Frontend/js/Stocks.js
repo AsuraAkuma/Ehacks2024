@@ -1,4 +1,4 @@
-import config from '../Pages/config.json' assert { type: "json" };
+import config from './config.json' assert { type: "json" };
 
 
 // get canvas elements
@@ -238,6 +238,7 @@ window.addEventListener('load', (event) => {
                         ctx.stroke();
                     };
                     let xIndex = 0;
+
                     function canvasStuff(ctx) {
                         fetch(`${config.apiUri}/api/ingame-events/slope?` + new URLSearchParams({ gameId: gameId }), {
                             headers: new Headers({
@@ -255,11 +256,10 @@ window.addEventListener('load', (event) => {
                                 color = 'red';
                             }
                             xIndex += 8;
-                            createLine(stockObj.prevX, stockObj.prevY, xIndex, newY, color, "4px", ctx);
+                            createLine(stockObj.prevX, stockObj.prevY, xIndex, newY, color, 1.5, ctx);
                             stockObj['currStockVal'] = stockObj.currStockVal + (stockObj.prevY - newY);
                             stockObj['prevX'] = xIndex;
                             stockObj['prevY'] = newY;
-                            // createLine(0, 50, 20, 100, "red", "2px", ctx1)
                         });
                         const interval = setInterval(() => {
                             const result = stockObjList.find(s => s.canvas === stockObj.canvas);
@@ -282,11 +282,10 @@ window.addEventListener('load', (event) => {
                                         color = 'red';
                                     }
                                     xIndex += 8;
-                                    createLine(stockObj.prevX, stockObj.prevY, xIndex, newY, color, "4px", ctx);
+                                    createLine(stockObj.prevX, stockObj.prevY, xIndex, newY, color, 1.5, ctx);
                                     stockObj['currStockVal'] = stockObj.currStockVal + (stockObj.prevY - newY);
                                     stockObj['prevX'] = xIndex;
                                     stockObj['prevY'] = newY;
-                                    // createLine(0, 50, 20, 100, "red", "2px", ctx1)
                                     if (xIndex === 300 && gameMode === "timed") {
                                         clearInterval(interval);
                                     }
@@ -333,7 +332,7 @@ window.addEventListener('load', (event) => {
                     chosenObj['num'] = 0;
                 }
                 capital = capital + (chosenObj.currStockVal * parseInt(numToSell));
-                capital = Math.floor(capital / 5) * 5;
+                capital = Math.floor(capital / 1) * 1;
                 document.getElementById("capital").innerHTML = `Capital: ${capital}`
                 if (chosenObj.num === 0) {
                     document.getElementById(`sideMenu-list-optionButton-sell-${chosenObj.name}`).remove();

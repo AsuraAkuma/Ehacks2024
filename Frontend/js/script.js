@@ -81,7 +81,7 @@ window.addEventListener("load", () => {
                         return;
                     }
                     document.cookie = `mode=${currentOption};path=/`;
-                    window.location.pathname = "../Frontend/Stocks.html"
+                    window.location.pathname = "./Frontend/Stocks.html"
                 })
 
             }
