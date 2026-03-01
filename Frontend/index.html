@@ -21,9 +21,14 @@
     </div>
     <div class="GAMEMODES">
       <p>GAMEMODES</p>
-      <button>Timed</button>
-      <button>Endless</button>
-      <button>King of Debt</button>
+      <button onclick="startGame('Timed')">Timed</button>
+      <button onclick="startGame('Endless')">Endless</button>
+      <button onclick="startGame('KingOfDebt')">King of Debt</button>
     </div>
   </body>
+  <script>
+    function startGame(mode) {
+      window.location.href = `./Stocks.html?mode=${mode}`;
+    }
+  </script>
 </html>
